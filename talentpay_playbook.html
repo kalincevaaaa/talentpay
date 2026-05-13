@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)file:///Users/alisakalintseva/Downloads/talentpay_playbook_v6.html -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>talentpay_playbook</title>
+<link href="./talentpay_playbook_files/css2" rel="stylesheet">
+<style>
+:root {
+  --black: #0d0d0d;
+  --white: #f7f5f0;
+  --accent: #ff4f1f;
+  --accent2: #1a3fff;
+  --mid: #2a2a2a;
+  --border: #e0ddd6;
+  --muted: #7a7670;
+  --surface: #f0ede6;
+  --success-bg: #e8f5e9;
+  --success-text: #1b5e20;
+  --warn-bg: #fff8e1;
+  --warn-text: #7a5c00;
+  --info-bg: #e8eeff;
+  --info-text: #1a3fff;
+  --danger-bg: #ffeaea;
+  --danger-text: #b00020;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Golos Text', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 32px;
+  border-bottom: 2px solid var(--accent);
+  overflow-x: auto;
+}
+nav a {
+  display: block;
+  padding: 14px 18px;
+  color: #aaa;
+  text-decoration: none;
+  font-size: 12px;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color .2s, border-color .2s;
+}
+nav a:hover, nav a.active { color: #fff; border-bottom-color: var(--accent); }
+
+/* HERO */
+.hero {
+  background: var(--black);
+  color: #fff;
+  padding: 64px 48px 56px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: 'TALENT PAY';
+  position: absolute;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 120px;
+  color: rgba(255,255,255,0.03);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  letter-spacing: -4px;
+  pointer-events: none;
+}
+.hero-label {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+.hero h1 span { color: var(--accent); }
+.hero-sub {
+  font-size: 16px;
+  color: #aaa;
+  max-width: 560px;
+  line-height: 1.6;
+}
+.hero-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+.tag {
+  padding: 5px 12px;
+  border: 1px solid #333;
+  border-radius: 100px;
+  font-size: 12px;
+  color: #888;
+  font-family: 'Unbounded', sans-serif;
+  letter-spacing: 0.03em;
+}
+
+/* LAYOUT */
+.page { max-width: 900px; margin: 0 auto; padding: 0 32px 80px; }
+
+/* SECTIONS */
+section {
+  padding-top: 64px;
+  border-top: 1px solid var(--border);
+  margin-top: 48px;
+}
+section:first-of-type { border-top: none; margin-top: 48px; }
+
+.section-num {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+section h2 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.card {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border);
+}
+.card-icon {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.card h3 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: -0.2px;
+}
+.card p { font-size: 14px; color: #444; line-height: 1.6; }
+
+/* CALLOUT BOXES */
+.callout {
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 20px 0;
+  border-left: 4px solid;
+}
+.callout.info { background: var(--info-bg); border-color: var(--accent2); color: var(--info-text); }
+.callout.success { background: var(--success-bg); border-color: #2e7d32; color: var(--success-text); }
+.callout.warn { background: var(--warn-bg); border-color: #f59f00; color: var(--warn-text); }
+.callout.danger { background: var(--danger-bg); border-color: #b00020; color: var(--danger-text); }
+.callout strong { font-weight: 600; display: block; margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* COMPARISON TABLE */
+.compare {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+}
+.compare th {
+  background: var(--black);
+  color: #fff;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-align: left;
+  padding: 12px 16px;
+}
+.compare th:first-child { border-radius: 8px 0 0 0; }
+.compare th:last-child { border-radius: 0 8px 0 0; }
+.compare td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.compare tr:last-child td { border-bottom: none; }
+.compare tr:nth-child(even) td { background: var(--surface); }
+.compare .yes { color: #2e7d32; font-weight: 600; }
+.compare .no { color: #b00020; font-weight: 600; }
+.compare .highlight td { background: #fffbe6 !important; }
+
+/* CALC BOX */
+.calc-box {
+  background: var(--black);
+  color: #fff;
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin: 24px 0;
+  font-family: 'Golos Text', sans-serif;
+}
+.calc-box h3 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.calc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 0;
+  border-bottom: 1px solid #222;
+  font-size: 14px;
+}
+.calc-row:last-child { border-bottom: none; }
+.calc-row .label { color: #aaa; }
+.calc-row .val { font-weight: 600; font-size: 16px; }
+.calc-row.total { border-top: 2px solid var(--accent); margin-top: 4px; }
+.calc-row.total .val { color: var(--accent); font-size: 22px; font-family: 'Unbounded', sans-serif; }
+.calc-row.competitor .val { color: #ff8a65; text-decoration: line-through; }
+
+/* STEPS */
+.steps { counter-reset: step; margin: 20px 0; }
+.step {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 24px;
+  align-items: flex-start;
+}
+.step-num {
+  counter-increment: step;
+  min-width: 36px;
+  height: 36px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.step-content h4 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  letter-spacing: -0.2px;
+}
+.step-content p { font-size: 14px; color: #444; }
+
+/* Q&A */
+.qa-list { margin: 16px 0; }
+.qa {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.qa-q {
+  padding: 16px 20px;
+  background: var(--surface);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  user-select: none;
+}
+.qa-q::after {
+  content: '↓';
+  font-size: 14px;
+  color: var(--accent);
+  transition: transform .2s;
+  flex-shrink: 0;
+}
+.qa.open .qa-q::after { transform: rotate(180deg); }
+.qa-a {
+  display: none;
+  padding: 16px 20px;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.7;
+  border-top: 1px solid var(--border);
+}
+.qa.open .qa-a { display: block; }
+
+/* PILL BADGES */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.badge.red { background: var(--danger-bg); color: var(--danger-text); }
+.badge.green { background: var(--success-bg); color: var(--success-text); }
+.badge.blue { background: var(--info-bg); color: var(--accent2); }
+.badge.orange { background: #fff0e8; color: #c04a00; }
+
+/* RULE BLOCK */
+.rule-block {
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 20px 0;
+}
+.rule-block .rule-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.rule-block ul { padding-left: 20px; }
+.rule-block ul li { margin-bottom: 6px; font-size: 14px; }
+
+/* FLOW */
+.flow {
+  display: flex;
+  gap: 0;
+  margin: 24px 0;
+  overflow-x: auto;
+}
+.flow-step {
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+  position: relative;
+}
+.flow-step::after {
+  content: '→';
+  position: absolute;
+  right: -14px;
+  top: 18px;
+  font-size: 20px;
+  color: var(--accent);
+  z-index: 1;
+}
+.flow-step:last-child::after { display: none; }
+.flow-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 10px;
+  margin: 0 12px;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.flow-step.active .flow-box {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.flow-label {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* INLINE CODE */
+code {
+  font-family: monospace;
+  background: var(--surface);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: var(--accent);
+}
+
+/* PRINT */
+@media print {
+  nav { display: none; }
+  .hero { padding: 32px; }
+}
+
+/* SCROLL */
+html { scroll-behavior: smooth; }
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="https://kalincevaaaa.github.io/talentpay/talentpay_playbook.html#product" class="">Продукт</a>
+  <a href="https://kalincevaaaa.github.io/talentpay/talentpay_playbook.html#how">Механика</a>
+  <a href="https://kalincevaaaa.github.io/talentpay/talentpay_playbook.html#pricing">Тарифы</a>
+  <a href="https://kalincevaaaa.github.io/talentpay/talentpay_playbook.html#vat">НДС</a>
+  <a href="https://kalincevaaaa.github.io/talentpay/talentpay_playbook.html#nonresident">Нерезиденты</a>
+  <a href="https://kalincevaaaa.github.io/talentpay/talentpay_playbook.html#legal">Легализация</a>
+  <a href="https://kalincevaaaa.github.io/talentpay/talentpay_playbook.html#fx">Курс и комиссии</a>
+  <a href="https://kalincevaaaa.github.io/talentpay/talentpay_playbook.html#sales">Продажи</a>
+  <a href="https://kalincevaaaa.github.io/talentpay/talentpay_playbook.html#competitors">Конкуренты</a>
+  <a href="https://kalincevaaaa.github.io/talentpay/talentpay_playbook.html#faq">Вопросы и возражения</a>
+  <a href="https://kalincevaaaa.github.io/talentpay/talentpay_playbook.html#cases">Кейсы</a>
+  <a href="https://kalincevaaaa.github.io/talentpay/talentpay_playbook.html#docs">Документы и оплата</a>
+  <a href="https://kalincevaaaa.github.io/talentpay/talentpay_playbook.html#quiz-section">Тест</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">Плейбук продаж · 2026</div>
+  <h1>Talent<span>Pay</span><br>Playbook</h1>
+  <p class="hero-sub">Полное руководство по продукту, тарифам, налогообложению и работе с клиентами — для менеджеров по продажам.</p>
+</div>
+
+<div class="page">
+
+<!-- 1. ПРОДУКТ -->
+<section id="product">
+  <div class="section-num">01</div>
+  <h2>Что такое TalentPay</h2>
+  <p style="margin-bottom: 20px; font-size: 16px; color: #333;">TalentPay — платформа для легальных выплат исполнителям (фрилансерам, подрядчикам, самозанятым) как внутри России, так и за рубеж. Мы берём на себя весь compliance: налоги, 115-ФЗ, риск переквалификации, валютный контроль.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🏦</div>
+      <h3>Легальные выплаты</h3>
+      <p>Белые деньги с договором. Исполнитель получает официальный доход, заказчик — чистый документооборот.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌍</div>
+      <h3>РФ и зарубеж</h3>
+      <p>Выплаты внутри России, в страны СНГ и дальнее зарубежье. В любой валюте — рубли, доллары, евро, дирхамы.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🛡️</div>
+      <h3>Мы берём риски</h3>
+      <p>Риск переквалификации, проверки 115-ФЗ, AML-проверки банков — всё это снимается с заказчика и исполнителя.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>Уникальный УСН</h3>
+      <p>Единственная платформа на рынке, принимающая платежи от компаний на упрощёнке с 5% НДС вместо 22%.</p>
+    </div>
+  </div>
+  <div class="callout info">
+    <strong>Ключевой месседж</strong>
+    TalentPay — это не просто перевод денег. Это легализация дохода исполнителя, защита заказчика от налоговых рисков и полный compliance в одном решении.
+  </div>
+</section>
+
+<!-- 2. МЕХАНИКА -->
+<section id="how">
+  <div class="section-num">02</div>
+  <h2>Как это работает</h2>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-box">Заказчик пополняет счёт</div>
+      <div class="flow-label">ООО / ИП / нерез</div>
+    </div>
+    <div class="flow-step active">
+      <div class="flow-box">TalentPay обрабатывает</div>
+      <div class="flow-label">договор, налоги, KYB</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-box">Исполнитель получает</div>
+      <div class="flow-label">рубли / валюта / крипта</div>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Заключение договора</h4>
+        <p>Заказчик подписывает договор с TalentPay. Указываем, кому, в какой валюте и по каким реквизитам платить исполнителям. Мы проводим базовый KYB (know your business) — проверяем контрагента.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Пополнение баланса</h4>
+        <p>Заказчик переводит нам деньги — на российское юрлицо (ОСН или УСН) или на нерезидента (Армения / Гонконг). Мы принимаем рубли, валюту, в зависимости от кейса.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Выплата исполнителям</h4>
+        <p>Мы перечисляем деньги исполнителям. Внутри РФ — через нерезидентный контур (Армения / Гонконг, счёт ВТБ в рублях). Это снимает риск переквалификации и 115-ФЗ. За рубеж — через соответствующие юрлица.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Документооборот и отчётность</h4>
+        <p>Заказчик получает все закрывающие документы. Наш казначей держит наготове бумаги для AML-проверок банков — транзакции проходят без задержек.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. ТАРИФЫ -->
+<section id="pricing">
+  <div class="section-num">03</div>
+  <h2>Тарифы и комиссии</h2>
+  <div class="callout warn">
+    <strong>Правило №1</strong>
+    Никогда не называй комиссию до квал-вопросов. Сначала — квалификация, потом — звонок, потом — коммерческое предложение под кейс. Исключения — только если клиент категорически не готов к диалогу.
+  </div>
+  <table class="compare">
+    <tbody><tr>
+      <th>Тип клиента</th>
+      <th>Куда платит</th>
+      <th>Комиссия</th>
+      <th>НДС</th>
+      <th>Итого нагрузка</th>
+    </tr>
+    <tr>
+      <td>ОСН (22% НДС)</td>
+      <td>Наше ОСН юрлицо / нерез в рублях</td>
+      <td>~4–6%</td>
+      <td>22% (к вычету)</td>
+      <td class="yes">~4–6% чистыми</td>
+    </tr>
+    <tr class="highlight">
+      <td><strong>УСН (0% НДС)</strong> <span class="badge orange">Уникально</span></td>
+      <td>Наше УСН юрлицо</td>
+      <td>10%</td>
+      <td>5%</td>
+      <td class="yes"><strong>15% итого</strong></td>
+    </tr>
+    <tr>
+      <td>УСН (если платит на ОСН)</td>
+      <td>Любой конкурент</td>
+      <td>~4–6%</td>
+      <td>22% (НЕ к вычету)</td>
+      <td class="no">~26–28% итого</td>
+    </tr>
+    <tr>
+      <td>Зарубежный заказчик</td>
+      <td>Нерез (Армения / Гонконг)</td>
+      <td>обсуждается</td>
+      <td>экспортный 22%</td>
+      <td>case by case</td>
+    </tr>
+  </tbody></table>
+  <div class="callout info">
+    <strong>Напоминание по курсовой комиссии</strong>
+    На вывод исполнителям — скрытых комиссий нет, сколько сказали — столько придёт. На ввод (оплата нам) — курсовая волатильность 1,5–2,5% в зависимости от кейса. Всегда договариваемся заранее и фиксируем в договоре.
+  </div>
+</section>
+
+<!-- 4. НДС -->
+<section id="vat">
+  <div class="section-num">04</div>
+  <h2>НДС и налогообложение</h2>
+  <p style="margin-bottom: 24px; color: #444;">Два режима, которые нужно знать наизусть — ОСН и УСН. От этого зависит, какое коммерческое предложение делать клиенту.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🏢</div>
+      <h3>ОСН — общая система</h3>
+      <p>НДС <strong>22%</strong> с 1 января 2026. Компании на ОСН могут брать НДС <strong>к вычету</strong> — то есть для них этот НДС как будто не существует. Мы тоже на ОСН, поэтому нам засчитывается.</p>
+    </div>
+    <div class="card" style="border: 2px solid var(--accent);">
+      <div class="card-icon">⭐</div>
+      <h3>УСН — упрощёнка <span class="badge orange">Уникально</span></h3>
+      <p>До 60 млн выручки — НДС <strong>0%</strong>. Превысили порог (мы уже превысили) — НДС <strong>5%</strong>. Таких компаний на рынке почти нет. Конкуренты — все на ОСН.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family: &#39;Unbounded&#39;, sans-serif; font-size: 15px; margin: 28px 0 16px;">Почему УСН — это наше конкурентное преимущество</h3>
+  <p style="margin-bottom: 16px; color: #444;">Если у клиента компания на упрощёнке и он идёт к конкурентам (которые все на ОСН), он платит 22% НДС <strong>сверху</strong> и не может взять к вычету, потому что разные налоговые режимы.</p>
+
+  <div class="calc-box">
+    <h3>Расчёт: клиент на УСН с 0% НДС</h3>
+    <div class="calc-row competitor">
+      <span class="label">К конкурентам (ОСН): комиссия 6% + НДС 22%</span>
+      <span class="val">~28%</span>
+    </div>
+    <div class="calc-row">
+      <span class="label">К нам: комиссия</span>
+      <span class="val">10%</span>
+    </div>
+    <div class="calc-row">
+      <span class="label">НДС (УСН)</span>
+      <span class="val">5%</span>
+    </div>
+    <div class="calc-row total">
+      <span class="label">Итого к нам</span>
+      <span class="val">15%</span>
+    </div>
+  </div>
+
+  <div class="callout success">
+    <strong>Аргумент для клиента на УСН</strong>
+    «Вы сейчас платите 28% совокупной нагрузки, потому что НДС на ОСН вы к вычету взять не можете. У нас — 15% итого. Это почти в два раза дешевле, и это не маркетинг — это математика.»
+  </div>
+
+  <h3 style="font-family: &#39;Unbounded&#39;, sans-serif; font-size: 15px; margin: 28px 0 16px;">НДС при зарубежных платежах</h3>
+  <p style="color: #444;">Если компания из РФ платит нам в рублях на Гонконг — возникает <strong>экспортный НДС 22%</strong>. Он уплачивается в бюджет РФ, до нас не доходит. Плюс клиент встаёт на <strong>валютный контроль</strong>. Это нужно честно говорить клиенту.</p>
+
+  <div class="callout warn">
+    <strong>Частый вопрос: «Если мы платим вам из России на Гонконг в рублях?»</strong>
+    Да, возникает экспортный НДС 22% и валютный контроль. Именно поэтому преимущественно мы хотим получать рубли на нерезидента — это удобнее для обеих сторон.
+  </div>
+</section>
+
+<!-- 5. НЕРЕЗИДЕНТЫ -->
+<section id="nonresident">
+  <div class="section-num">05</div>
+  <h2>Контур нерезидентов</h2>
+  <p style="margin-bottom: 20px; color: #444;">Когда мы платим исполнителям внутри РФ, мы делаем это <strong>не от российского юрлица</strong>, а от нерезидента — компании в Армении или Гонконге, у которой есть счёт ВТБ в рублях.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🔄</div>
+      <h3>Снятие риска переквалификации</h3>
+      <p>Если компания регулярно платит одному и тому же ИП или самозанятому — налоговая может переквалифицировать это в трудовые отношения. Мы забираем этот риск на себя.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔒</div>
+      <h3>115-ФЗ под контролем</h3>
+      <p>С 2026 года проверки ужесточились. Платёж от нерезидента — другая природа, меньше флагов для банков. Исполнители не рискуют блокировкой счёта.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family: &#39;Unbounded&#39;, sans-serif; font-size: 15px; margin: 28px 0 12px;">Что такое переквалификация — объяснение клиенту</h3>
+  <div class="callout danger">
+    <strong>Риск для заказчика</strong>
+    Налоговая видит: одна компания ежемесячно переводит деньги одному ИП или самозанятому за одинаковые услуги. Вывод: это фактически трудовые отношения, оформленные в обход ТК. Итог — штраф, доначисления всех взносов (НДФЛ, ПФР, ФСС), уголовная ответственность директора при больших объёмах.
+  </div>
+  <div class="callout success">
+    <strong>Наше решение</strong>
+    Платёж идёт от нашего нерезидентного юрлица. Исполнитель получает деньги от «иностранной» компании — нет паттерна регулярных выплат от заказчика напрямую. Риск переквалификации устранён.
+  </div>
+
+  <h3 style="font-family: &#39;Unbounded&#39;, sans-serif; font-size: 15px; margin: 28px 0 12px;">Про 115-ФЗ — что важно знать</h3>
+  <p style="color: #444; margin-bottom: 12px;">115-ФЗ — закон о противодействии отмыванию денег. Банки обязаны контролировать все операции. Если физлицо регулярно получает крупные суммы от одного источника — счёт блокируется до выяснения обстоятельств.</p>
+  <p style="color: #444;">Через нерезидентный контур эта проблема решается: платёж приходит от иностранного юрлица, что является нормальной практикой для исполнителей, работающих с зарубежными компаниями.</p>
+</section>
+
+<!-- 6. ЛЕГАЛИЗАЦИЯ -->
+<section id="legal">
+  <div class="section-num">06</div>
+  <h2>Зачем легализовывать выплаты</h2>
+  <p style="margin-bottom: 20px; color: #444;">Самый частый вопрос от новых клиентов: «Зачем платить комиссию, если можно скинуть на карту или в крипте?» Вот полный ответ.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">💳</div>
+      <h3>Переводы на карту</h3>
+      <p>Нелегальный доход. Налоговая проверяет регулярные поступления от юрлиц физикам. Банки блокируют по 115-ФЗ. Тинькофф — пожизненный бан. Директору грозит уголовка при больших объёмах.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">₿</div>
+      <h3>Крипта</h3>
+      <p>Российская компания не имеет права платить зарплату в крипте по закону. Нужно зарубежное юрлицо (Гонконг — от $15 000 + постоянные расходы на обслуживание). Для ИП в ОАЭ — не более 40% в крипте, 60% — официально.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">✅</div>
+      <h3>Через TalentPay</h3>
+      <p>Белый доход. Полный документооборот. Исполнитель может показать доход при ипотеке, визе, налоговой. Заказчик защищён от переквалификации, штрафов, доначислений.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family: &#39;Unbounded&#39;, sans-serif; font-size: 15px; margin: 28px 0 12px;">Виды денег — что нужно знать</h3>
+  <table class="compare">
+    <tbody><tr>
+      <th>Тип</th>
+      <th>Что это</th>
+      <th>Наша работа</th>
+    </tr>
+    <tr>
+      <td><span class="badge green">Чистые</span></td>
+      <td>Реальная компания, белые деньги, хороший банк с KYC</td>
+      <td class="yes">Работаем</td>
+    </tr>
+    <tr>
+      <td><span class="badge blue">Серые</span></td>
+      <td>Микс чистых и чёрных — часто бывает в крипте (Tier-3/4 биржи, непонятные кошельки)</td>
+      <td class="no">Не работаем</td>
+    </tr>
+    <tr>
+      <td><span class="badge red">Чёрные</span></td>
+      <td>Нелегальная деятельность: торговля оружием, скам, казино, терроризм, кэш в цифру</td>
+      <td class="no">Никогда</td>
+    </tr>
+  </tbody></table>
+
+  <div class="callout info">
+    <strong>AML — Anti-Money Laundering</strong>
+    Банки ставят транзакции «на стоп» и запрашивают документы об источнике денег. У нас есть казначей с полным пакетом документов — договора, акты. Банк проверяет, убеждается, что это легальная деятельность, пропускает платёж. Клиент об этом даже не узнаёт — всё на нашей стороне.
+  </div>
+</section>
+
+<!-- 7. КУРС -->
+<section id="fx">
+  <div class="section-num">07</div>
+  <h2>Курс и комиссии — без скрытых наценок</h2>
+
+  <div class="cards">
+    <div class="card" style="border: 2px solid var(--accent);">
+      <div class="card-icon">📤</div>
+      <h3>На вывод исполнителям</h3>
+      <p><strong>Скрытых комиссий нет.</strong> Сколько вы сказали сумму — столько мы и переведём. В рублях, в валюте, в твёрдой или мягкой — без разницы.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📥</div>
+      <h3>На ввод (оплата нам)</h3>
+      <p>К курсу добавляется <strong>курсовая волатильность 1,5–2,5%</strong> в зависимости от кейса. Фиксируем заранее в договоре и не меняем.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family: &#39;Unbounded&#39;, sans-serif; font-size: 15px; margin: 28px 0 12px;">Как конкуренты делают скрытые комиссии</h3>
+  <p style="color: #444; margin-bottom: 16px;">Конкуренты (например, EasyStaff) заявляют «комиссия 4%», но работают по внутреннему курсу, который они сами устанавливают — иногда на 5–8 рублей дороже рыночного. В итоге реальная нагрузка 10%+, а клиент думает, что платит 4%.</p>
+
+  <div class="calc-box">
+    <h3>Пример: конкурент vs TalentPay</h3>
+    <div class="calc-row competitor">
+      <span class="label">Конкурент: «4% комиссия» + скрытый курс +6%</span>
+      <span class="val">~10%+</span>
+    </div>
+    <div class="calc-row">
+      <span class="label">TalentPay: комиссия</span>
+      <span class="val">4–6%</span>
+    </div>
+    <div class="calc-row">
+      <span class="label">Курсовая волатильность (фиксированная)</span>
+      <span class="val">+2%</span>
+    </div>
+    <div class="calc-row total">
+      <span class="label">Итого прозрачно</span>
+      <span class="val">6–8%</span>
+    </div>
+  </div>
+
+  <div class="callout success">
+    <strong>Скрипт ответа на «есть ли у вас скрытые комиссии на вывод?»</strong>
+    «На вывод — нет, никаких скрытых комиссий. Сколько скажете сумму, столько мы и переведём. На ввод — есть курсовая волатильность 1,5–2,5%, мы её фиксируем заранее в договоре, она не меняется в процессе работы.»
+  </div>
+</section>
+
+<!-- 8. ПРОДАЖИ -->
+<section id="sales">
+  <div class="section-num">08</div>
+  <h2>Процесс продажи</h2>
+
+  <div class="rule-block">
+    <div class="rule-title">Золотые правила</div>
+    <ul>
+      <li><strong>Никогда</strong> не называй комиссию до квал-вопросов</li>
+      <li><strong>Всегда</strong> тащи на звонок — сегодня, завтра, любой слот</li>
+      <li>На звонке: узнай условия у текущего провайдера → обострение проблем → предложи несколько вариантов КП</li>
+      <li>В переписке невозможно правильно отработать возражения — нужен живой контакт</li>
+    </ul>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Квал-вопросы</h4>
+        <p>Выясни: налоговый режим компании (ОСН / УСН), количество и тип исполнителей, страны выплат, текущий провайдер и его условия, объём выплат в месяц. Без этого нет смысла обсуждать цену.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Звонок / встреча</h4>
+        <p>Предложи звонок в любое удобное время. На встрече: (1) узнай детально текущую ситуацию, (2) обострение — что не устраивает у текущего решения, (3) предложи 2–3 варианта КП под конкретный кейс.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Коммерческое предложение</h4>
+        <p>Только после квал-вопросов и звонка. КП должно быть заточено под режим налогообложения клиента и его кейс. Покажи математику — сравни с тем, что он платит сейчас.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Закрытие</h4>
+        <p>Договор → KYB-проверка → онбординг. Если клиент тянет — возвращайся к боли (что он теряет, оставаясь у текущего провайдера).</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family: &#39;Unbounded&#39;, sans-serif; font-size: 15px; margin: 28px 0 12px;">Квал-вопросы — чеклист</h3>
+  <table class="compare">
+    <tbody><tr>
+      <th>Вопрос</th>
+      <th>Зачем спрашивать</th>
+    </tr>
+    <tr><td>На каком налоговом режиме ваша компания?</td><td>ОСН или УСН — разные КП</td></tr>
+    <tr><td>Сколько исполнителей и в каких странах?</td><td>Маршрутизация выплат, риски</td></tr>
+    <tr><td>Какой сейчас провайдер? Какой процент?</td><td>Знаем, от чего отстраиваться</td></tr>
+    <tr><td>Какой объём выплат в месяц (примерно)?</td><td>Определяем комиссию и приоритет</td></tr>
+    <tr><td>Что сейчас не устраивает в текущем решении?</td><td>Находим точку боли для обострения</td></tr>
+  </tbody></table>
+</section>
+
+<!-- 9. КОНКУРЕНТЫ -->
+<section id="competitors">
+  <div class="section-num">09</div>
+  <h2>Работа с конкурентами</h2>
+
+  <table class="compare">
+    <tbody><tr>
+      <th>Критерий</th>
+      <th>TalentPay</th>
+      <th>Конкуренты (Solar Staff, EasyStaff и др.)</th>
+    </tr>
+    <tr>
+      <td>УСН-клиенты</td>
+      <td class="yes">Принимаем, 5% НДС</td>
+      <td class="no">Не принимают — все на ОСН</td>
+    </tr>
+    <tr>
+      <td>Скрытые комиссии на курсе</td>
+      <td class="yes">Нет — фиксируем заранее</td>
+      <td class="no">Внутренний курс, скрытая наценка</td>
+    </tr>
+    <tr>
+      <td>Контур нерезидентов</td>
+      <td class="yes">Армения / Гонконг</td>
+      <td>Зависит от провайдера</td>
+    </tr>
+    <tr>
+      <td>Риск переквалификации</td>
+      <td class="yes">Снят — платим от нерезидента</td>
+      <td class="no">На заказчике</td>
+    </tr>
+    <tr>
+      <td>115-ФЗ</td>
+      <td class="yes">Снят через нерезидентный контур</td>
+      <td class="no">Риски остаются</td>
+    </tr>
+  </tbody></table>
+
+  <div class="callout info">
+    <strong>Кейс Solar Staff</strong>
+    Клиент сравнивает нас с Solar Staff. На встрече обязательно: (1) узнай их текущие условия — процент и НДС, (2) посчитай математику вместе с клиентом, (3) если клиент на УСН — задача решена, 15% против 28%. Если на ОСН — аргументируй через прозрачность курса и снятие рисков.
+  </div>
+</section>
+
+<!-- 10. FAQ -->
+<section id="faq">
+  <div class="section-num">10</div>
+  <h2>Частые вопросы и возражения</h2>
+
+  <div class="qa-list">
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Зачем платить комиссию? Можно же просто скинуть на карту»</div>
+      <div class="qa-a">Перевод на карту — это нелегальный доход для исполнителя. Банки контролируют регулярные поступления от юрлиц. При больших объёмах счёт блокируется по 115-ФЗ. Тинькофф и Альфа-банк баят пожизненно. Для заказчика — риск переквалификации, штрафы, доначисления, уголовная ответственность директора. Мы решаем эту проблему легально.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«А можно в крипте?»</div>
+      <div class="qa-a">Российская компания по закону не может платить зарплату в крипте — крипта не является средством платежа в РФ. Для выплат в USDT нужно зарубежное юрлицо. Гонконгское юрлицо — от $15 000 на открытие плюс постоянные расходы на обслуживание. В ОАЭ — не более 40% зарплаты в крипте, 60% — официально в фиате. Легче заплатить нашу комиссию.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Какая у вас комиссия?»</div>
+      <div class="qa-a">Комиссия зависит от вашего налогового режима, объёма и кейса. Давайте я задам несколько уточняющих вопросов — тогда смогу назвать точные цифры и подготовить расчёт, который будет выгоден именно для вас. Когда удобно созвониться?</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Есть ли у вас скрытые комиссии на курсе?»</div>
+      <div class="qa-a">На вывод исполнителям — никаких скрытых комиссий. Сколько скажете сумму — столько и придёт. На ввод (оплата нам) — курсовая волатильность 1,5–2,5%, фиксируется в договоре заранее и не меняется. В отличие от конкурентов, которые устанавливают внутренний курс без предупреждения.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Мы на УСН, у вас же тоже будет 22% НДС?»</div>
+      <div class="qa-a">Нет. Мы — единственная платформа на рынке, которая принимает платежи от УСН-компаний с 5% НДС. Если вы пойдёте к конкурентам, все они на ОСН — вы заплатите 22% НДС, которые не сможете взять к вычету из-за разных режимов. У нас: комиссия 10% + НДС 5% = 15% итого. Против 28%+ у конкурентов.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Вы AML проходите?»</div>
+      <div class="qa-a">Да. У нас есть внутренний казначей и полный пакет документов — договора, акты, обоснование транзакций. Банки регулярно ставят нас на стоп, казначей мгновенно предоставляет документы, платёж проходит. Клиент об этом не узнаёт — всё на нашей стороне.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Почему вы платите от Армении / Гонконга?»</div>
+      <div class="qa-a">Это наш нерезидентный контур. Исполнители получают деньги от иностранного юрлица — нет паттерна регулярных выплат от заказчика напрямую. Это снимает риск переквалификации и 115-ФЗ с обеих сторон. Все расчёты в рублях через счёт ВТБ.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Если мы платим вам из России на Гонконг в рублях — будет ли НДС и валютный контроль?»</div>
+      <div class="qa-a">Да, возникает экспортный НДС 22% (уплачивается в бюджет РФ, до нас не доходит) и валютный контроль. Именно поэтому мы преимущественно принимаем рубли на нерезидента — это удобнее для обеих сторон и без лишних обременений.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Что такое переквалификация и чем она грозит?»</div>
+      <div class="qa-a">Налоговая видит, что компания регулярно платит одному и тому же ИП/самозанятому за одинаковые услуги. Вывод: это трудовые отношения, замаскированные под гражданско-правовой договор. Последствия: штраф, доначисление всех взносов (НДФЛ, ПФР, ФСС) за весь период, обязанность оформить в штат, уголовная ответственность директора при крупных суммах.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«В какие страны вы не работаете?»</div>
+      <div class="qa-a">Мы не работаем с Украиной и странами из чёрных и серых списков ФАТФ. При нестандартных запросах (необычная юрисдикция, непонятный контрагент) — берём на уточнение, проводим KYB-проверку и консультируемся с налоговиками.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Как выглядит платёж с российского ООО? Куда платить и на каком основании?»</div>
+      <div class="qa-a">Оплата происходит по договору услуг — обычно предмет договора это IT-разработка или аналогичная услуга, но можем прописать реальный предмет под кейс клиента. Платите нам на наше ООО за услугу. Всё легально, с полным пакетом закрывающих документов.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Если мы из РФ — на какое юрлицо можем заплатить?»</div>
+      <div class="qa-a">Есть три варианта в зависимости от вашего налогового режима:<br><br>
+      <strong>Антей (УСН, 5% НДС)</strong> — если вы на УСН. НДС нельзя взять к вычету, но ставка низкая.<br>
+      <strong>Рейвикс (ОСН, 22% НДС)</strong> — если вы на ОСН. НДС можно взять к вычету — фактически нейтрально.<br>
+      <strong>Гонконг (ВТБ, рубли, экспортный НДС 22%)</strong> — тоже можно взять к вычету.<br><br>
+      Важно: если вы на УСН — принимаем только на УСН-юрлицо. Если на ОСН — только на ОСН.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Есть ли курс на вывод исполнителям?»</div>
+      <div class="qa-a">Нет. Исполнителю приходит фиксированная сумма — без каких-либо вычетов. Комиссия взимается только на ввод (когда заказчик пополняет баланс). На выводе — никаких наценок и скрытых комиссий.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Как оформляются документы с исполнителем?»</div>
+      <div class="qa-a">Всё происходит на платформе:<br><br>
+      1. Исполнитель подписывает оферту единоразово при регистрации.<br>
+      2. Каждый месяц автоматически формируется пакет документов под выплату: приложение, акт, инвойс.<br><br>
+      Никакой бумажной волокиты — всё в электронном виде.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«На какие карты и банки вы переводите исполнителям?»</div>
+      <div class="qa-a">Работаем со всеми банками — у исполнителей не будет проблем с картами. Также можем:<br>
+      — Перенаправить средства на российское юрлицо исполнителя<br>
+      — Перевести в криптовалюте (USDT и другие)<br><br>
+      Исполнитель получает деньги от нашего нерезидентного юрлица — это снижает риск переквалификации и проверок по 115-ФЗ.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Через какой счёт идут выплаты исполнителям?»</div>
+      <div class="qa-a">Выплаты идут на расчётный счёт исполнителя напрямую — не транзитный, не номинальный.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Возможны выплаты по ГПХ и физлицам без статуса?»</div>
+      <div class="qa-a">Да, работаем с обоими форматами. Выплаты по договору ГПХ — да. Физлица без статуса самозанятого или ИП — тоже да.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Какие документы нужны от исполнителя?»</div>
+      <div class="qa-a">Физлицо и самозанятый — паспорт. ИП — паспорт + подтверждение налогового статуса. Документы загружаются при регистрации на платформе.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Есть ли выплаты по реестру? Какие данные нужны?»</div>
+      <div class="qa-a">Да. Для выплаты по реестру нужны: email, ФИО, описание услуги, сумма, период оплаты (за какой период платим).</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Нужна ли верификация исполнителей?»</div>
+      <div class="qa-a">Да, однократно. Исполнитель регистрируется на платформе и проходит внутреннюю верификацию — проверка паспорта на подлинность. После этого всё работает в штатном режиме.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«Какая комиссия?»</div>
+      <div class="qa-a">Зависит от налогового режима. Если клиент на УСН (5% НДС) — минимальная комиссия 10%. Если на ОСН (22% НДС) — от 3%. Точные условия подбираются под объём и кейс — называем после квал-вопросов.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«На какую сумму выставляете закрывающие документы?»</div>
+      <div class="qa-a">Для заказчика — на всю сумму выплат. Для исполнителя — без учёта комиссий и конвертаций, он получает ровно ту сумму, которую ему назначили.</div>
+    </div>
+    <div class="qa">
+      <div class="qa-q" onclick="toggleQA(this)">«У вас компания в Армении, мы не готовы работать с иностранной юрисдикцией»</div>
+      <div class="qa-a">У нас несколько юрлиц в разных юрисдикциях — в том числе российские. Договор с вами заключается от российского юрлица — всё в рублях, по российскому праву.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. КЕЙСЫ -->
+
+<!-- 11. КЕЙСЫ -->
+<section id="cases">
+  <div class="section-num">11</div>
+  <h2>Примеры кейсов</h2>
+
+  <div class="cards">
+    <div class="card" style="grid-column: 1 / -1;">
+      <div class="card-icon">💼</div>
+      <h3>Кейс 1: IT-компания на УСН, 50 разработчиков в РФ</h3>
+      <p style="margin-bottom: 12px;"><strong>Ситуация:</strong> Компания на упрощёнке, платит сейчас через Solar Staff на ОСН. Платёж 5 млн руб/мес + 6% комиссия Solar Staff + 22% НДС (не возмещаемый) = суммарная нагрузка ~28%.</p>
+      <p><strong>Решение TalentPay:</strong> Переходим на наше УСН-юрлицо. 10% комиссия + 5% НДС = 15%. Экономия клиента: 13% от 5 млн = <strong>650 000 руб/мес</strong>.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌐</div>
+      <h3>Кейс 2: Зарубежный заказчик, выплаты в РФ</h3>
+      <p>Компания из США хочет платить 20 разработчикам в России. Напрямую — санкционные риски. Через нас: деньги из США → Гонконг → ВТБ (Гонконг нерез) → исполнители в РФ. Легально, быстро, без рисков.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💱</div>
+      <h3>Кейс 3: Клиент жалуется на скрытый курс у конкурента</h3>
+      <p>Конкурент «берёт 4%», но курс на платформе на 6 рублей дороже рынка. Реальная нагрузка 10–12%. Показываем наш расчёт: 6% комиссия + 2% волатильность = 8%, и всё прозрачно, в договоре.</p>
+    </div>
+  </div>
+
+  <div class="callout success">
+    <strong>Главный аргумент на любом звонке</strong>
+    «Давайте я возьму ваши цифры и посчитаем вместе — сколько вы платите сейчас и сколько будете платить у нас. Обычно разница очевидна уже на первом расчёте.»
+  </div>
+</section>
+
+<!-- 12. ДОКУМЕНТЫ И ОПЛАТА -->
+<section id="docs">
+  <div class="section-num">12</div>
+  <h2>Документы исполнителей и способы оплаты</h2>
+
+  <h3 style="font-family: &#39;Unbounded&#39;, sans-serif; font-size: 15px; margin-bottom: 16px;">Что нужно от исполнителя</h3>
+  <table class="compare">
+    <tbody><tr>
+      <th>Статус исполнителя</th>
+      <th>Документы</th>
+    </tr>
+    <tr>
+      <td>Самозанятый / физлицо</td>
+      <td>Паспорт</td>
+    </tr>
+    <tr>
+      <td>ИП</td>
+      <td>Подтверждение налогового статуса</td>
+    </tr>
+    <tr>
+      <td>Нерезидент</td>
+      <td>Паспорт</td>
+    </tr>
+  </tbody></table>
+
+  <h3 style="font-family: &#39;Unbounded&#39;, sans-serif; font-size: 15px; margin: 28px 0 16px;">Как происходит оплата</h3>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">📥</div>
+      <h3>Заказчик → нам</h3>
+      <p>Заказчик оплачивает по выставленному счёту. Принимаем рубли и валюту (USD, EUR, AED).</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📤</div>
+      <h3>Мы → исполнителям</h3>
+      <p>Переводим на банковский счёт исполнителя (полные реквизиты карты с БИК) или на крипту.</p>
+    </div>
+  </div>
+
+  <div class="callout info">
+    <strong>Юридическая структура выплат в РФ</strong>
+    Приоритет — от Гонконга (счёт ВТБ в рублях). Армения — тоже доступна, второй вариант. Договор с клиентом на ОСН → наше ОСН-юрлицо. Договор с клиентом на УСН → наше УСН-юрлицо (5% НДС).
+  </div>
+
+  <div class="callout success">
+    <strong>«Вы иностранная компания, нам нельзя с вами работать»</strong>
+    Договор заключается с нашим гонконгским юрлицом, у которого счёт в ВТБ России в рублях. Гонконг не попадает под ограничения для РФ. Фактически для вас это обычный рублёвый платёж в российский банк.
+  </div>
+</section>
+
+</div><!-- end .page -->
+
+<!-- QUIZ -->
+<div style="background: var(--black); padding: 64px 0; margin-top: 48px;">
+<div style="max-width: 900px; margin: 0 auto; padding: 0 32px;">
+  <div style="font-family: &#39;Unbounded&#39;, sans-serif; font-size: 11px; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 8px;">Проверь себя</div>
+  <h2 style="font-family: &#39;Unbounded&#39;, sans-serif; font-size: 22px; color: #fff; margin-bottom: 8px; letter-spacing: -0.5px;">Тест по плейбуку</h2>
+  <p style="color: #888; font-size: 14px; margin-bottom: 32px;">10 вопросов — проверь, насколько хорошо усвоил материал</p>
+
+  <div id="quiz">
+    <div class="q-card " id="qcard-0">
+      <div class="q-num">Вопрос 1 из 20</div>
+      <div class="q-text">Клиент на УСН приходит к конкуренту на ОСН. Какова его суммарная налоговая нагрузка?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(0, 0)">
+            5% НДС
+          </button>
+        
+          <button class="q-opt " onclick="answer(0, 1)">
+            15% итого
+          </button>
+        
+          <button class="q-opt " onclick="answer(0, 2)">
+            22% НДС которые нельзя взять к вычету
+          </button>
+        
+          <button class="q-opt " onclick="answer(0, 3)">
+            10% комиссия
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-0">
+        💡 Клиент на УСН не может взять к вычету НДС 22% при работе с компанией на ОСН — это разные налоговые режимы. Итого нагрузка 28%+ против 15% у нас.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-1">
+      <div class="q-num">Вопрос 2 из 20</div>
+      <div class="q-text">Какой НДС у нашего УСН-юрлица?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(1, 0)">
+            0%
+          </button>
+        
+          <button class="q-opt " onclick="answer(1, 1)">
+            5%
+          </button>
+        
+          <button class="q-opt " onclick="answer(1, 2)">
+            10%
+          </button>
+        
+          <button class="q-opt " onclick="answer(1, 3)">
+            22%
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-1">
+        💡 Мы превысили порог в 60 млн выручки, поэтому наш НДС на УСН составляет 5%. Это уникально — конкуренты все на ОСН с 22%.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-2">
+      <div class="q-num">Вопрос 3 из 20</div>
+      <div class="q-text">Клиент говорит: «Вы иностранная компания, нам нельзя с вами работать». Что отвечаем?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(2, 0)">
+            Извините, это правда
+          </button>
+        
+          <button class="q-opt " onclick="answer(2, 1)">
+            Договор с Эстонией, всё легально
+          </button>
+        
+          <button class="q-opt " onclick="answer(2, 2)">
+            Договор с Гонконгом, счёт в ВТБ в рублях, Гонконг не попадает под ограничения для РФ
+          </button>
+        
+          <button class="q-opt " onclick="answer(2, 3)">
+            Мы работаем через Армению
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-2">
+        💡 Договор заключается с нашим гонконгским юрлицом, у которого счёт в ВТБ России в рублях. Гонконг не попадает под санкционные ограничения для РФ — это обычный рублёвый платёж.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-3">
+      <div class="q-num">Вопрос 4 из 20</div>
+      <div class="q-text">Когда можно называть комиссию клиенту?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(3, 0)">
+            Сразу в первом сообщении
+          </button>
+        
+          <button class="q-opt " onclick="answer(3, 1)">
+            Только после квал-вопросов
+          </button>
+        
+          <button class="q-opt " onclick="answer(3, 2)">
+            Только после встречи
+          </button>
+        
+          <button class="q-opt " onclick="answer(3, 3)">
+            Никогда, ждём когда сам спросит
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-3">
+        💡 Комиссия — только после квал-вопросов. Без понимания налогового режима, объёма и кейса невозможно назвать правильную цифру. Исключение — если клиент категорически не идёт на контакт.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-4">
+      <div class="q-num">Вопрос 5 из 20</div>
+      <div class="q-text">Через какое юрлицо приоритетно платим исполнителям внутри РФ?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(4, 0)">
+            Эстония
+          </button>
+        
+          <button class="q-opt " onclick="answer(4, 1)">
+            Армения
+          </button>
+        
+          <button class="q-opt " onclick="answer(4, 2)">
+            Гонконг (счёт ВТБ в рублях)
+          </button>
+        
+          <button class="q-opt " onclick="answer(4, 3)">
+            Российское ОСН-юрлицо
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-4">
+        💡 Приоритет — от Гонконга, у которого есть счёт ВТБ в рублях. Армения — второй вариант. Это снимает риск переквалификации и 115-ФЗ.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-5">
+      <div class="q-num">Вопрос 6 из 20</div>
+      <div class="q-text">Что такое переквалификация и чем она грозит заказчику?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(5, 0)">
+            Смена налогового режима
+          </button>
+        
+          <button class="q-opt " onclick="answer(5, 1)">
+            Налоговая признаёт отношения с ИП/самозанятым трудовыми — штраф, доначисления, уголовная ответственность директора
+          </button>
+        
+          <button class="q-opt " onclick="answer(5, 2)">
+            Блокировка счёта по 115-ФЗ
+          </button>
+        
+          <button class="q-opt " onclick="answer(5, 3)">
+            Запрет на работу с нерезидентами
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-5">
+        💡 Если компания регулярно платит одному ИП за одинаковые услуги, налоговая может признать это трудовыми отношениями. Итог: штраф, доначисление всех взносов, обязанность оформить в штат, уголовка для директора.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-6">
+      <div class="q-num">Вопрос 7 из 20</div>
+      <div class="q-text">Что нужно от самозанятого для выплат?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(6, 0)">
+            ИНН и СНИЛС
+          </button>
+        
+          <button class="q-opt " onclick="answer(6, 1)">
+            Паспорт
+          </button>
+        
+          <button class="q-opt " onclick="answer(6, 2)">
+            Подтверждение налогового статуса
+          </button>
+        
+          <button class="q-opt " onclick="answer(6, 3)">
+            Справка о самозанятости из налоговой
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-6">
+        💡 От самозанятых и физлиц достаточно паспорта. От ИП нужно подтверждение налогового статуса.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-7">
+      <div class="q-num">Вопрос 8 из 20</div>
+      <div class="q-text">Как заказчик платит нам?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(7, 0)">
+            Только в рублях
+          </button>
+        
+          <button class="q-opt " onclick="answer(7, 1)">
+            Только в валюте
+          </button>
+        
+          <button class="q-opt " onclick="answer(7, 2)">
+            По выставленному счёту — рубли или валюта
+          </button>
+        
+          <button class="q-opt " onclick="answer(7, 3)">
+            Через крипту
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-7">
+        💡 Заказчик платит нам по выставленному счёту — принимаем как рубли, так и валюту (USD, EUR, AED) в зависимости от кейса.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-8">
+      <div class="q-num">Вопрос 9 из 20</div>
+      <div class="q-text">Клиент на УСН приходит к нам. Какова его итоговая нагрузка?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(8, 0)">
+            5%
+          </button>
+        
+          <button class="q-opt " onclick="answer(8, 1)">
+            10%
+          </button>
+        
+          <button class="q-opt " onclick="answer(8, 2)">
+            15%
+          </button>
+        
+          <button class="q-opt " onclick="answer(8, 3)">
+            22%
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-8">
+        💡 10% наша комиссия + 5% НДС (УСН) = 15% итого. Против 28%+ у конкурентов на ОСН. Экономия почти в 2 раза.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-9">
+      <div class="q-num">Вопрос 10 из 20</div>
+      <div class="q-text">Что такое 115-ФЗ и почему это важно?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(9, 0)">
+            Закон об НДС
+          </button>
+        
+          <button class="q-opt " onclick="answer(9, 1)">
+            Закон о валютном контроле
+          </button>
+        
+          <button class="q-opt " onclick="answer(9, 2)">
+            Закон о противодействии отмыванию денег — банки контролируют операции и могут блокировать счета
+          </button>
+        
+          <button class="q-opt " onclick="answer(9, 3)">
+            Закон о самозанятых
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-9">
+        💡 115-ФЗ — закон о противодействии отмыванию денег. Банки обязаны контролировать операции. С 2026 года проверки ужесточились. Через наш нерезидентный контур этот риск с исполнителей снимается.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-10">
+      <div class="q-num">Вопрос 11 из 20</div>
+      <div class="q-text">Клиент на ОСН платит нам. Какое наше юрлицо ему подходит?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(10, 0)">
+            Антей (УСН)
+          </button>
+        
+          <button class="q-opt " onclick="answer(10, 1)">
+            Рейвикс (ОСН) или Гонконг
+          </button>
+        
+          <button class="q-opt " onclick="answer(10, 2)">
+            Только Армения
+          </button>
+        
+          <button class="q-opt " onclick="answer(10, 3)">
+            Любое — без разницы
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-10">
+        💡 Если клиент на ОСН — принимаем только на ОСН-юрлицо (Рейвикс) или Гонконг. Если клиент на УСН — только на УСН (Антей). Смешивать режимы нельзя.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-11">
+      <div class="q-num">Вопрос 12 из 20</div>
+      <div class="q-text">Как исполнитель подписывает документы с нами?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(11, 0)">
+            Бумажный договор по почте каждый месяц
+          </button>
+        
+          <button class="q-opt " onclick="answer(11, 1)">
+            Единоразово подписывает оферту на платформе, далее ежемесячно формируется пакет документов автоматически
+          </button>
+        
+          <button class="q-opt " onclick="answer(11, 2)">
+            Через нотариуса
+          </button>
+        
+          <button class="q-opt " onclick="answer(11, 3)">
+            Никаких документов не нужно
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-11">
+        💡 Исполнитель подписывает оферту единоразово при регистрации на платформе. Каждый месяц автоматически формируется пакет: приложение, акт, инвойс. Никакой бумажной волокиты.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-12">
+      <div class="q-num">Вопрос 13 из 20</div>
+      <div class="q-text">Клиент спрашивает: «Есть ли у вас курс на вывод?» Что отвечаем?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(12, 0)">
+            Да, плюс 2% к курсу
+          </button>
+        
+          <button class="q-opt " onclick="answer(12, 1)">
+            Нет, исполнитель получает фиксированную сумму без вычетов. Комиссия только на ввод
+          </button>
+        
+          <button class="q-opt " onclick="answer(12, 2)">
+            Да, берём 1,5–2,5%
+          </button>
+        
+          <button class="q-opt " onclick="answer(12, 3)">
+            Зависит от валюты
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-12">
+        💡 На вывод курса нет — исполнитель получает ровно ту сумму, которую указал заказчик. Курсовая волатильность 1,5–2,5% взимается только на ввод (когда заказчик пополняет баланс).
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-13">
+      <div class="q-num">Вопрос 14 из 20</div>
+      <div class="q-text">На каком основании российское ООО платит нам?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(13, 0)">
+            Договор займа
+          </button>
+        
+          <button class="q-opt " onclick="answer(13, 1)">
+            Договор услуг (IT-разработка или реальная услуга под кейс клиента)
+          </button>
+        
+          <button class="q-opt " onclick="answer(13, 2)">
+            Договор купли-продажи
+          </button>
+        
+          <button class="q-opt " onclick="answer(13, 3)">
+            Агентский договор
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-13">
+        💡 Оплата происходит по договору услуг. Обычно предмет — IT-разработка, но можем прописать реальную услугу под кейс клиента. Всё легально с полным пакетом закрывающих документов.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-14">
+      <div class="q-num">Вопрос 15 из 20</div>
+      <div class="q-text">Что такое AML и как мы с этим работаем?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(14, 0)">
+            Это налог, мы его платим за клиента
+          </button>
+        
+          <button class="q-opt " onclick="answer(14, 1)">
+            Anti-Money Laundering — банки проверяют происхождение денег. У нас есть казначей с полным пакетом документов — платежи проходят без задержек
+          </button>
+        
+          <button class="q-opt " onclick="answer(14, 2)">
+            Это система проверки исполнителей
+          </button>
+        
+          <button class="q-opt " onclick="answer(14, 3)">
+            Мы не проходим AML проверки
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-14">
+        💡 AML — закон об отмывании денег. Банки ставят транзакции на стоп и запрашивают документы. У нас есть казначей, который держит наготове все бумаги. Клиент об этих проверках даже не узнаёт.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-15">
+      <div class="q-num">Вопрос 16 из 20</div>
+      <div class="q-text">Каков первый шаг при работе с новым лидом?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(15, 0)">
+            Сразу отправить КП с тарифами
+          </button>
+        
+          <button class="q-opt " onclick="answer(15, 1)">
+            Задать квал-вопросы, затем предложить звонок
+          </button>
+        
+          <button class="q-opt " onclick="answer(15, 2)">
+            Назвать комиссию и ждать ответа
+          </button>
+        
+          <button class="q-opt " onclick="answer(15, 3)">
+            Отправить ссылку на сайт
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-15">
+        💡 Первый шаг — всегда квал-вопросы. Без понимания налогового режима, объёма и географии невозможно сделать правильное КП. Второй шаг — звонок. Комиссию не называем до квалификации.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-16">
+      <div class="q-num">Вопрос 17 из 20</div>
+      <div class="q-text">Что такое «серые деньги»?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(16, 0)">
+            Деньги в иностранной валюте
+          </button>
+        
+          <button class="q-opt " onclick="answer(16, 1)">
+            Микс чистых и чёрных денег — например USDT с подозрительных бирж или кошельков
+          </button>
+        
+          <button class="q-opt " onclick="answer(16, 2)">
+            Деньги без договора
+          </button>
+        
+          <button class="q-opt " onclick="answer(16, 3)">
+            Криптовалюта любого вида
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-16">
+        💡 Серые деньги — смесь чистых и чёрных. Чаще всего встречаются в крипте: USDT с Tier-3/4 бирж или непонятных кошельков. Мы с серыми деньгами не работаем, только с чистыми.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-17">
+      <div class="q-num">Вопрос 18 из 20</div>
+      <div class="q-text">Может ли EasyStaff предложить клиенту на УСН платить с 5% НДС?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(17, 0)">
+            Да, у них тоже есть УСН-юрлицо
+          </button>
+        
+          <button class="q-opt " onclick="answer(17, 1)">
+            Нет — все конкуренты работают только на ОСН
+          </button>
+        
+          <button class="q-opt " onclick="answer(17, 2)">
+            Да, если объём больше $100k
+          </button>
+        
+          <button class="q-opt " onclick="answer(17, 3)">
+            Зависит от страны клиента
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-17">
+        💡 Ни один конкурент не предоставляет УСН-юрлицо. Все на ОСН. Поэтому клиент на упрощёнке у конкурентов платит 22% НДС которые не может взять к вычету — итого 28%+ против наших 15%.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-18">
+      <div class="q-num">Вопрос 19 из 20</div>
+      <div class="q-text">Клиент говорит: «У нас исполнители — юрлица, можете им платить?»</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(18, 0)">
+            Да, работаем с любыми юрлицами
+          </button>
+        
+          <button class="q-opt " onclick="answer(18, 1)">
+            Нет — мы проводим выплаты только физлицам по договору ГПХ (самозанятые, ИП, нерезиденты)
+          </button>
+        
+          <button class="q-opt " onclick="answer(18, 2)">
+            Только если они зарегистрированы в РФ
+          </button>
+        
+          <button class="q-opt " onclick="answer(18, 3)">
+            Только в рублях
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-18">
+        💡 Мы работаем только с физлицами по договору ГПХ — самозанятыми, ИП, нерезидентами. С юрлицами на стороне исполнителя не работаем.
+      </div>
+    </div>
+  
+    <div class="q-card " id="qcard-19">
+      <div class="q-num">Вопрос 20 из 20</div>
+      <div class="q-text">Что означает «экспортный НДС 22%» при платеже из РФ на Гонконг?</div>
+      <div class="q-options">
+        
+          <button class="q-opt " onclick="answer(19, 0)">
+            Мы берём 22% сверху как свою комиссию
+          </button>
+        
+          <button class="q-opt " onclick="answer(19, 1)">
+            НДС уплачивается в бюджет РФ, до нас не доходит. Плюс возникает валютный контроль
+          </button>
+        
+          <button class="q-opt " onclick="answer(19, 2)">
+            Клиент получает возврат 22%
+          </button>
+        
+          <button class="q-opt " onclick="answer(19, 3)">
+            Это просто название нашего тарифа
+          </button>
+        
+      </div>
+      <div class="q-explanation " id="exp-19">
+        💡 При платеже из РФ на Гонконг в рублях возникает экспортный НДС 22% — он уплачивается государству, до нас не доходит. Также клиент встаёт на валютный контроль. Поэтому мы приоритетно принимаем рубли на нерезидента внутри РФ.
+      </div>
+    </div>
+  </div>
+
+  <div id="quiz-result" style="display:none; margin-top: 32px; padding: 28px 32px; background: #1a1a1a; border-radius: 16px; border: 1px solid #333; text-align: center;">
+    <div id="quiz-score" style="font-family: &#39;Unbounded&#39;, sans-serif; font-size: 42px; color: var(--accent); margin-bottom: 8px;"></div>
+    <div id="quiz-msg" style="font-size: 16px; color: #aaa; margin-bottom: 20px;"></div>
+    <button onclick="restartQuiz()" style="padding: 10px 28px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-family: &#39;Unbounded&#39;, sans-serif; font-size: 12px; cursor: pointer; letter-spacing: 0.05em;">Пройти снова</button>
+  </div>
+</div>
+</div>
+
+<style>
+.q-card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+.q-card.answered { border-color: #333; }
+.q-num { font-family: 'Unbounded', sans-serif; font-size: 10px; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+.q-text { font-size: 15px; color: #fff; font-weight: 500; margin-bottom: 16px; line-height: 1.5; }
+.q-options { display: flex; flex-direction: column; gap: 8px; }
+.q-opt {
+  padding: 11px 16px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  color: #aaa;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+  background: transparent;
+  line-height: 1.4;
+}
+.q-opt:hover:not(:disabled) { border-color: #555; color: #fff; }
+.q-opt.correct { border-color: #2e7d32; background: #0d2e10; color: #81c784; }
+.q-opt.wrong { border-color: #b00020; background: #2e0d10; color: #ef9a9a; }
+.q-opt.show-correct { border-color: #2e7d32; background: #0d2e10; color: #81c784; }
+.q-opt:disabled { cursor: not-allowed; }
+.q-explanation { margin-top: 12px; font-size: 13px; color: #888; line-height: 1.6; display: none; padding: 10px 14px; background: #111; border-radius: 8px; border-left: 3px solid var(--accent); }
+.q-explanation.visible { display: block; }
+</style>
+
+<script>
+const questions = [
+  {
+    q: 'Клиент на УСН приходит к конкуренту на ОСН. Какова его суммарная налоговая нагрузка?',
+    opts: ['5% НДС', '15% итого', '22% НДС которые нельзя взять к вычету', '10% комиссия'],
+    correct: 2,
+    explanation: 'Клиент на УСН не может взять к вычету НДС 22% при работе с компанией на ОСН — это разные налоговые режимы. Итого нагрузка 28%+ против 15% у нас.'
+  },
+  {
+    q: 'Какой НДС у нашего УСН-юрлица?',
+    opts: ['0%', '5%', '10%', '22%'],
+    correct: 1,
+    explanation: 'Мы превысили порог в 60 млн выручки, поэтому наш НДС на УСН составляет 5%. Это уникально — конкуренты все на ОСН с 22%.'
+  },
+  {
+    q: 'Клиент говорит: «Вы иностранная компания, нам нельзя с вами работать». Что отвечаем?',
+    opts: ['Извините, это правда', 'Договор с Эстонией, всё легально', 'Договор с Гонконгом, счёт в ВТБ в рублях, Гонконг не попадает под ограничения для РФ', 'Мы работаем через Армению'],
+    correct: 2,
+    explanation: 'Договор заключается с нашим гонконгским юрлицом, у которого счёт в ВТБ России в рублях. Гонконг не попадает под санкционные ограничения для РФ — это обычный рублёвый платёж.'
+  },
+  {
+    q: 'Когда можно называть комиссию клиенту?',
+    opts: ['Сразу в первом сообщении', 'Только после квал-вопросов', 'Только после встречи', 'Никогда, ждём когда сам спросит'],
+    correct: 1,
+    explanation: 'Комиссия — только после квал-вопросов. Без понимания налогового режима, объёма и кейса невозможно назвать правильную цифру. Исключение — если клиент категорически не идёт на контакт.'
+  },
+  {
+    q: 'Через какое юрлицо приоритетно платим исполнителям внутри РФ?',
+    opts: ['Эстония', 'Армения', 'Гонконг (счёт ВТБ в рублях)', 'Российское ОСН-юрлицо'],
+    correct: 2,
+    explanation: 'Приоритет — от Гонконга, у которого есть счёт ВТБ в рублях. Армения — второй вариант. Это снимает риск переквалификации и 115-ФЗ.'
+  },
+  {
+    q: 'Что такое переквалификация и чем она грозит заказчику?',
+    opts: ['Смена налогового режима', 'Налоговая признаёт отношения с ИП/самозанятым трудовыми — штраф, доначисления, уголовная ответственность директора', 'Блокировка счёта по 115-ФЗ', 'Запрет на работу с нерезидентами'],
+    correct: 1,
+    explanation: 'Если компания регулярно платит одному ИП за одинаковые услуги, налоговая может признать это трудовыми отношениями. Итог: штраф, доначисление всех взносов, обязанность оформить в штат, уголовка для директора.'
+  },
+  {
+    q: 'Что нужно от самозанятого для выплат?',
+    opts: ['ИНН и СНИЛС', 'Паспорт', 'Подтверждение налогового статуса', 'Справка о самозанятости из налоговой'],
+    correct: 1,
+    explanation: 'От самозанятых и физлиц достаточно паспорта. От ИП нужно подтверждение налогового статуса.'
+  },
+  {
+    q: 'Как заказчик платит нам?',
+    opts: ['Только в рублях', 'Только в валюте', 'По выставленному счёту — рубли или валюта', 'Через крипту'],
+    correct: 2,
+    explanation: 'Заказчик платит нам по выставленному счёту — принимаем как рубли, так и валюту (USD, EUR, AED) в зависимости от кейса.'
+  },
+  {
+    q: 'Клиент на УСН приходит к нам. Какова его итоговая нагрузка?',
+    opts: ['5%', '10%', '15%', '22%'],
+    correct: 2,
+    explanation: '10% наша комиссия + 5% НДС (УСН) = 15% итого. Против 28%+ у конкурентов на ОСН. Экономия почти в 2 раза.'
+  },
+  {
+    q: 'Что такое 115-ФЗ и почему это важно?',
+    opts: ['Закон об НДС', 'Закон о валютном контроле', 'Закон о противодействии отмыванию денег — банки контролируют операции и могут блокировать счета', 'Закон о самозанятых'],
+    correct: 2,
+    explanation: '115-ФЗ — закон о противодействии отмыванию денег. Банки обязаны контролировать операции. С 2026 года проверки ужесточились. Через наш нерезидентный контур этот риск с исполнителей снимается.'
+  },
+  {
+    q: 'Клиент на ОСН платит нам. Какое наше юрлицо ему подходит?',
+    opts: ['Антей (УСН)', 'Рейвикс (ОСН) или Гонконг', 'Только Армения', 'Любое — без разницы'],
+    correct: 1,
+    explanation: 'Если клиент на ОСН — принимаем только на ОСН-юрлицо (Рейвикс) или Гонконг. Если клиент на УСН — только на УСН (Антей). Смешивать режимы нельзя.'
+  },
+  {
+    q: 'Как исполнитель подписывает документы с нами?',
+    opts: ['Бумажный договор по почте каждый месяц', 'Единоразово подписывает оферту на платформе, далее ежемесячно формируется пакет документов автоматически', 'Через нотариуса', 'Никаких документов не нужно'],
+    correct: 1,
+    explanation: 'Исполнитель подписывает оферту единоразово при регистрации на платформе. Каждый месяц автоматически формируется пакет: приложение, акт, инвойс. Никакой бумажной волокиты.'
+  },
+  {
+    q: 'Клиент спрашивает: «Есть ли у вас курс на вывод?» Что отвечаем?',
+    opts: ['Да, плюс 2% к курсу', 'Нет, исполнитель получает фиксированную сумму без вычетов. Комиссия только на ввод', 'Да, берём 1,5–2,5%', 'Зависит от валюты'],
+    correct: 1,
+    explanation: 'На вывод курса нет — исполнитель получает ровно ту сумму, которую указал заказчик. Курсовая волатильность 1,5–2,5% взимается только на ввод (когда заказчик пополняет баланс).'
+  },
+  {
+    q: 'На каком основании российское ООО платит нам?',
+    opts: ['Договор займа', 'Договор услуг (IT-разработка или реальная услуга под кейс клиента)', 'Договор купли-продажи', 'Агентский договор'],
+    correct: 1,
+    explanation: 'Оплата происходит по договору услуг. Обычно предмет — IT-разработка, но можем прописать реальную услугу под кейс клиента. Всё легально с полным пакетом закрывающих документов.'
+  },
+  {
+    q: 'Что такое AML и как мы с этим работаем?',
+    opts: ['Это налог, мы его платим за клиента', 'Anti-Money Laundering — банки проверяют происхождение денег. У нас есть казначей с полным пакетом документов — платежи проходят без задержек', 'Это система проверки исполнителей', 'Мы не проходим AML проверки'],
+    correct: 1,
+    explanation: 'AML — закон об отмывании денег. Банки ставят транзакции на стоп и запрашивают документы. У нас есть казначей, который держит наготове все бумаги. Клиент об этих проверках даже не узнаёт.'
+  },
+  {
+    q: 'Каков первый шаг при работе с новым лидом?',
+    opts: ['Сразу отправить КП с тарифами', 'Задать квал-вопросы, затем предложить звонок', 'Назвать комиссию и ждать ответа', 'Отправить ссылку на сайт'],
+    correct: 1,
+    explanation: 'Первый шаг — всегда квал-вопросы. Без понимания налогового режима, объёма и географии невозможно сделать правильное КП. Второй шаг — звонок. Комиссию не называем до квалификации.'
+  },
+  {
+    q: 'Что такое «серые деньги»?',
+    opts: ['Деньги в иностранной валюте', 'Микс чистых и чёрных денег — например USDT с подозрительных бирж или кошельков', 'Деньги без договора', 'Криптовалюта любого вида'],
+    correct: 1,
+    explanation: 'Серые деньги — смесь чистых и чёрных. Чаще всего встречаются в крипте: USDT с Tier-3/4 бирж или непонятных кошельков. Мы с серыми деньгами не работаем, только с чистыми.'
+  },
+  {
+    q: 'Может ли EasyStaff предложить клиенту на УСН платить с 5% НДС?',
+    opts: ['Да, у них тоже есть УСН-юрлицо', 'Нет — все конкуренты работают только на ОСН', 'Да, если объём больше $100k', 'Зависит от страны клиента'],
+    correct: 1,
+    explanation: 'Ни один конкурент не предоставляет УСН-юрлицо. Все на ОСН. Поэтому клиент на упрощёнке у конкурентов платит 22% НДС которые не может взять к вычету — итого 28%+ против наших 15%.'
+  },
+  {
+    q: 'Клиент говорит: «У нас исполнители — юрлица, можете им платить?»',
+    opts: ['Да, работаем с любыми юрлицами', 'Нет — мы проводим выплаты только физлицам по договору ГПХ (самозанятые, ИП, нерезиденты)', 'Только если они зарегистрированы в РФ', 'Только в рублях'],
+    correct: 1,
+    explanation: 'Мы работаем только с физлицами по договору ГПХ — самозанятыми, ИП, нерезидентами. С юрлицами на стороне исполнителя не работаем.'
+  },
+  {
+    q: 'Что означает «экспортный НДС 22%» при платеже из РФ на Гонконг?',
+    opts: ['Мы берём 22% сверху как свою комиссию', 'НДС уплачивается в бюджет РФ, до нас не доходит. Плюс возникает валютный контроль', 'Клиент получает возврат 22%', 'Это просто название нашего тарифа'],
+    correct: 1,
+    explanation: 'При платеже из РФ на Гонконг в рублях возникает экспортный НДС 22% — он уплачивается государству, до нас не доходит. Также клиент встаёт на валютный контроль. Поэтому мы приоритетно принимаем рубли на нерезидента внутри РФ.'
+  }
+];
+
+let current = 0;
+let score = 0;
+let answered = new Array(questions.length).fill(false);
+let userAnswers = new Array(questions.length).fill(null);
+
+function renderQuiz() {
+  const container = document.getElementById('quiz');
+  container.innerHTML = questions.map((q, qi) => `
+    <div class="q-card ${answered[qi] ? 'answered' : ''}" id="qcard-${qi}">
+      <div class="q-num">Вопрос ${qi + 1} из ${questions.length}</div>
+      <div class="q-text">${q.q}</div>
+      <div class="q-options">
+        ${q.opts.map((opt, oi) => `
+          <button class="q-opt ${getOptClass(qi, oi)}" 
+            onclick="answer(${qi}, ${oi})"
+            ${answered[qi] ? 'disabled' : ''}>
+            ${opt}
+          </button>
+        `).join('')}
+      </div>
+      <div class="q-explanation ${answered[qi] ? 'visible' : ''}" id="exp-${qi}">
+        💡 ${q.explanation}
+      </div>
+    </div>
+  `).join('');
+}
+
+function getOptClass(qi, oi) {
+  if (!answered[qi]) return '';
+  if (oi === questions[qi].correct) return 'correct';
+  if (oi === userAnswers[qi] && oi !== questions[qi].correct) return 'wrong';
+  return '';
+}
+
+function answer(qi, oi) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+  userAnswers[qi] = oi;
+  if (oi === questions[qi].correct) score++;
+  renderQuiz();
+
+  // Check if all answered
+  if (answered.every(a => a)) {
+    setTimeout(showResult, 600);
+  }
+}
+
+function showResult() {
+  document.getElementById('quiz-result').style.display = 'block';
+  const pct = Math.round((score / questions.length) * 100);
+  document.getElementById('quiz-score').textContent = `${score} / ${questions.length}`;
+  
+  let msg = '';
+  if (pct === 100) msg = '🔥 Идеально! Ты готов к любым вопросам клиентов.';
+  else if (pct >= 80) msg = '💪 Отлично! Материал усвоен, пара моментов требует внимания.';
+  else if (pct >= 60) msg = '📚 Неплохо, но стоит перечитать плейбук ещё раз.';
+  else msg = '🔄 Рекомендуем пройти плейбук заново перед звонками.';
+  
+  document.getElementById('quiz-msg').textContent = msg;
+  document.getElementById('quiz-result').scrollIntoView({ behavior: 'smooth' });
+}
+
+function restartQuiz() {
+  score = 0;
+  answered = new Array(questions.length).fill(false);
+  userAnswers = new Array(questions.length).fill(null);
+  document.getElementById('quiz-result').style.display = 'none';
+  renderQuiz();
+  document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+}
+
+renderQuiz();
+</script>
+
+<script>
+function toggleQA(el) {
+  el.parentElement.classList.toggle('open');
+}
+
+// Nav highlight on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      const link = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+
+sections.forEach(s => observer.observe(s));
+</script>
+
+
+</body></html>
